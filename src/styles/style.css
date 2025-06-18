@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Bungee+Tint&family=Funnel+Display:wght@300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.app {
+
+  max-width: 1940px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  font-size: 15px;
+  background-color: rgb(102, 102, 214);
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo h1 {
+  font-size: 20px;
+}
+
+@media(max-width: 600px) {
+  .logo h1 {
+    font-size: 15px;
+  }
+}
+
+.menu {
+  background-color: rgb(195, 195, 232);
+  color: black;
+  font-size: 20px;
+  max-width: 1940px;
+  margin: 0 auto;
+}
+
+
+.menu-links {
+  display: flex;
+  width: 100%;
+  /* pełna szerokość ekranu */
+}
+
+.menu-links a {
+  flex: 0 0 20%;
+  /* nie rośnie, nie maleje, dokładnie 20% */
+  text-align: center;
+  padding: 2px 0;
+  text-decoration: none;
+  color: black;
+  background-color: #f2f2f2;
+  /* opcjonalnie: żeby było widać podział */
+  border: 1px solid #ddd;
+  /* pomocniczo do debugowania */
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.menu-links a:hover {
+  font-weight: bold;
+}
+
+@media(max-width: 600px) {
+  .menu-links {
+    flex-direction: column;
+  }
+}
+
+
+.menuicon {
+  display: none;
+
+}
+
+@media(max-width: 600px) {
+
+  .menu {
+    display: none;
+  }
+
+  .menu.active {
+    display: block;
+  }
+
+  .menuicon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+}
+
+
+
+
+/*slajder*/
+.hero-slider-wrapper {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-slider .slide {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.slide-background {
+  border-radius: 14px;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 14px;
+  padding: 30px;
+  color: #fff;
+  max-width: 80%;
+  text-align: center;
+}
+
+.slide-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.slide-content p {
+  font-size: 1.2rem;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+/* 📱 Responsywność */
+@media (max-width: 768px) {
+  .slide-background {
+    height: 50vh;
+  }
+
+  .slide-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .slide-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-background {
+    height: 40vh;
+  }
+
+  .slide-content {
+    padding: 20px;
+  }
+
+  .slide-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .slide-content p {
+    font-size: 0.95rem;
+  }
+}
+
+/*koniec slajdera*/
+
+
+.aboutMe {
+  display: flex;
+}
+
+.aboutMeDescription {
+  flex-basis: 50%;
+  padding: 20px;
+}
+
+.aboutMeHeroPhoto {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutMeHeroPhoto img {
+  width: 80%;
+  height: auto;
+}
+
+.aboutMeDescription {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+@media (max-width: 600px) {
+  .aboutMe {
+    flex-direction: column;
+  }
+
+  .aboutMeDescription {
+    font-family: 'Funnel Display', 'Verdana', sans-serif;
+  }
+
+  .aboutMeHeroPhoto {}
+
+}
+
+
+.logging {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+.logging button {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+  padding: 5px;
+  border-color: transparent;
+  margin-left: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  font-size: 15px;
+}
+
+.logging button:hover {
+  color: white;
+  background-color: gray;
+}
+
+.app .privacyPolicy, .app .aboutOurPlatform, .app .contactPage, .app .adminPage {
+  font-family: 'Funnel Display', sans-serif;
+  padding: 10px;
+}
+
+.contactData {
+  font-family: 'Funnel Display', sans-serif;
+  display: flex;
+}
+
+.contactDataInfo {
+
+  flex-basis: 50%;
+}
+
+.contactFormContainer {
+
+  flex-basis: 50%;
+}
+
+.contactFormContainer label, .contactFormContainer input, .contactFormContainer textarea {
+  display: block;
+}
+
+.contactFormContainer input, .contactFormContainer textarea {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 99%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.contactFormContainer textarea {
+  height: 100px;
+}
+
+.contactFormContainer button {
+  background-color: black;
+  color: white;
+  border-color: transparent;
+  border-radius: 5px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+@media(max-width: 600px) {
+  .contactData {
+    flex-direction: column;
+  }
+
+  .contactFormContainer input, .contactFormContainer textarea {
+    width: 80%;
+  }
+}
+
+.adminPage label, .adminPage input {
+  display: block;
+}
+
+.adminPage input {
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  width: 30%;
+}
+
+.adminPage button {
+  background-color: black;
+  color: white;
+  border-color: transparent;
+  border-radius: 5px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+h3.adminInfo1 {
+  background-color: rgb(243, 213, 218);
+  border-radius: 3px;
+  border: 1px solid rgb(184, 68, 88);
+  padding: 5px;
+}
+
+h3.adminInfo2 {
+  margin-top: 5px;
+  background-color: rgb(121, 208, 121);
+  border-radius: 3px;
+  border: 1px solid rgb(31, 121, 31);
+  padding: 5px;
+}
+
+input.captcha {
+  width: 10vw;
+}
