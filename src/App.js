@@ -11,6 +11,11 @@ import Regulations from './components/Regulations'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import Admin from './components/Admin'
 import AdminMainPage from './components/AdminMainPage'
+import Messages from './components/Messages';
+import BlogAdmin from './components/BlogAdmin';
+import SingleArticle from './components/SingleArticle';
+import NewUser from './components/NewUser';
+import ClientsAdmin from './components/ClientsAdmin';
 
 
 function App() {
@@ -28,6 +33,11 @@ function App() {
         <Route path="/polityka-prywatnosci" element={<PrivacyPolicy/>} />
         <Route path="/admin" element={<Admin/>} />
         <Route path="/admin-main-page" element={<AdminMainPage/>} />
+        <Route path="/messages" element={<Messages/>} />
+        <Route path="/blogadmin" element={<BlogAdmin/>} />
+        <Route path="/single-article" element={<SingleArticle/>} />
+        <Route path="/new-user" element={<NewUser/>} />
+        <Route path="/klienciadmin" element={<ClientsAdmin/>} />
        </Routes>
     </Router>
     </Provider>

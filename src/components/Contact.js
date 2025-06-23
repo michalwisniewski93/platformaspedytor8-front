@@ -31,8 +31,9 @@ e.preventDefault()
 
     const message = messageContent
     const time = formatted
+    const status = false
 
-    axios.post("http://localhost:5000/tickets", {nameandsurname, email, message, time})
+    axios.post("http://localhost:5000/tickets", {nameandsurname, email, message, time, status})
         .then((response => setTickets([...tickets, response.data])))
         .catch(err => console.error('Error adding tickets', err))
     alert('Wiadomość została wysłana, dziękujemy.')

@@ -318,7 +318,7 @@ body {
   width: 30%;
 }
 
-.adminPage button {
+.adminPage button, .singleTicket button {
   background-color: black;
   color: white;
   border-color: transparent;
@@ -346,4 +346,343 @@ h3.adminInfo2 {
 
 input.captcha {
   width: 10vw;
+}
+
+.adminKokpit {
+  max-width: 1940px;
+  margin: 0 auto;
+  background-color: rgb(0, 0, 13);
+  height: 100vh;
+}
+
+.loginPanelAdminLogOut {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: rgb(42, 13, 94);
+  padding: 10px;
+}
+
+.loginPanelAdminLogOut button {
+  background-color: rgb(200, 194, 194);
+  border-color: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  color: black;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.loginPanelAdminLogOut button:hover {
+  background-color: grey;
+  font-weight: bold;
+}
+
+.adminOption {
+  background-color: transparent;
+}
+
+.adminOption nav ul {
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.adminOption nav ul li a {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  text-decoration: none;
+  background-color: rgb(42, 13, 94);
+  color: white;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.adminOption nav ul li a:hover {
+  background-color: silver;
+  color: black;
+}
+
+.adminOption h1 {
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.singleTicket {
+  background-color: white;
+  border-radius: 5px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.BlogAdmin {
+  background-color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+
+.addNewArticle form {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.addNewArticle form label, .addNewArticle form input, .addNewArticle form textarea {
+  display: block;
+}
+
+.addNewArticle form input, .addNewArticle form textarea {
+  width: 99%;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.addNewArticle form textarea {
+  height: 30vh;
+}
+
+.addNewArticle form input {
+  height: 30px;
+  font-family: 30px;
+}
+
+.addNewArticle form input {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.addNewArticle form textarea {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.addNewArticle button {
+  margin-top: 5px;
+  background-color: rgb(200, 194, 194);
+  border-color: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  color: black;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.addNewArticle button:hover {
+  font-weight: bold;
+  background-color: gray;
+  color: black;
+}
+
+.articlesPresentationAtAdmin {
+  background-color: rgb(42, 13, 94);
+}
+
+.articlesPresentationAtAdmin h1 {
+  color: black;
+}
+
+.singleArticleAdmin {
+  background-color: white;
+  color: black;
+  width: 90%;
+  margin: 0 auto 20px auto;
+
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.singleArticleAdmin button {
+  background-color: red;
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.singleArticleAdmin button:hover {
+  background-color: pink;
+}
+
+.singleArticleAdmin img {
+  width: 95%;
+  height: auto;
+}
+
+.app .blogExpert, .app .registration {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.app .blogExpert h1, .app .registration h1 {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.blogExpertContent {
+  display: flex;
+  flex-wrap: wrap;
+  /* Pozwala zawijać elementy na kolejne linie */
+}
+
+.blogExpertContentItem {
+  width: 33.33%;
+  /* Gwarantuje 3 elementy w rzędzie */
+  box-sizing: border-box;
+  /* Zapobiega przekroczeniu szerokości przez padding/border */
+  padding: 10px;
+  /* Opcjonalne odstępy między artykułami */
+}
+
+.blogExpertContentItem img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .blogExpertContentItem {
+    width: 100%;
+  }
+}
+
+.blogExpertContentItem button {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+  padding: 5px;
+  border-color: transparent;
+  margin-left: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  font-size: 15px;
+}
+
+
+form.setNewAccount {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+form.setNewAccount div {
+  flex-basis: 20%;
+}
+
+@media(max-width: 600px) {
+  form.setNewAccount {
+    flex-direction: column;
+  }
+}
+
+
+
+form.setNewAccount label, form.setNewAccount input, form.setNewAccount textarea {
+  display: block;
+}
+
+form.setNewAccount input, form.setNewAccount textarea {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 99%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+form.setNewAccount textarea {
+  height: 100px;
+}
+
+form.setNewAccount button {
+  background-color: black;
+  color: white;
+  border-color: transparent;
+  border-radius: 5px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+form.setNewAccount button:hover {
+  color: white;
+  background-color: gray;
+}
+
+form.setNewAccount input[type="checkbox"] {
+  display: inline;
+  width: 20px;
+  height: 20px;
+  accent-color: green;
+  vertical-align: middle;
+}
+
+
+.clientsAdminWrapper {
+  background-color: black;
+}
+
+.clientsAdminWrapper h1 {
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.clientsAdminItem {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  margin: 10px;
+}
+
+
+button.buttonToEdit {
+  background-color: rgb(42, 13, 94);
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+button.buttonToDelete {
+  background-color: red;
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+.messagesBox {
+  background-color: black;
+}
+
+.messagesBox h1 {
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.clientsAdminWrapper form button {
+  background-color: rgb(42, 13, 94);
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  margin: 5px;
 }

@@ -3,6 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
 
 
 const Admin = () => {
@@ -18,6 +19,10 @@ const Admin = () => {
 
 
      const navigate = useNavigate()
+     const dispatch = useDispatch()
+
+
+     const changeAdminLogged = () => dispatch({type: 'CHANGE_ADMIN_LOGGED'})
 
      
     const generateCaptcha = () => {
@@ -59,6 +64,7 @@ const found = admins.find(admin =>
 
     if(found){
         alert('✅ Zalogowano pomyślnie')
+        changeAdminLogged()
         navigate('/admin-main-page')
     } else {
         alert ('Dane niepoprawne')
@@ -76,8 +82,8 @@ const found = admins.find(admin =>
                 <Header/>
                 <div className="adminPage">
                     <h1>Panel administracyjny</h1>
-                    <h3 class="adminInfo1">Uwaga, to miejsce dla administratora. To nie jest miejsce do logowania do serwisu. Aby się zalogować na Konto klienta kliknij przycisk Zaloguj się w górnej części strony.</h3>
-                    <h3 class="adminInfo2">Jeżeli zaś posiadasz uprawnienia administratora zaloguj się przy pomocy poniższego formularza.</h3>
+                    <h3 className="adminInfo1">Uwaga, to miejsce dla administratora. To nie jest miejsce do logowania do serwisu. Aby się zalogować na Konto klienta kliknij przycisk Zaloguj się w górnej części strony.</h3>
+                    <h3 className="adminInfo2">Jeżeli zaś posiadasz uprawnienia administratora zaloguj się przy pomocy poniższego formularza.</h3>
                    
                    <form action="">
                     <label htmlFor="">Login:

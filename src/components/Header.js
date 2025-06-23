@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react'
 import { FaTruck } from 'react-icons/fa'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 
 
 const Header = () => {
+
+const navigate = useNavigate()
 
  useEffect(() => {
     const menuIcon = document.querySelector('.menuicon');
@@ -35,6 +37,10 @@ const Header = () => {
   }
 };
 
+const handleSignIn = () => {
+  navigate('/new-user')
+}
+
 
     return (
         <>
@@ -53,7 +59,7 @@ const Header = () => {
         </div>
         <div className="logging">
           <button>Zaloguj się</button>
-          <button>Zarejestruj się</button>
+          <button onClick={handleSignIn}>Zarejestruj się</button>
         </div>
         </>
     )
