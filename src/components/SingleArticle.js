@@ -1,16 +1,28 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
 import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 const SingleArticle = () => {
+
+
+
    
 const title = useSelector(state => state.temporaryBlogTitle)
 const imageurl = useSelector(state => state.temporaryBlogImageUrl)
 const author = useSelector(state => state.temporaryBlogAuthor)
 const description = useSelector(state => state.temporaryBlogDescription)
+
+const navigate = useNavigate()
+
+useEffect(() => {
+    if(title === '' || imageurl === '' || author === '' || description === ''){
+        navigate('/blog')
+    }
+}, [])
 
 
     return (

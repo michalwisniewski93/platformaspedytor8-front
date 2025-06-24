@@ -686,3 +686,132 @@ button.buttonToDelete {
   cursor: pointer;
   margin: 5px;
 }
+
+
+.salesSitesAdmin {
+  background-color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.salesSitesAdmin h1 {
+  color: black;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+
+
+.salesSitesAdmin form {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.salesSitesAdmin form label, .salesSitesAdmin form input, .salesSitesAdmin form textarea {
+  display: block;
+}
+
+.salesSitesAdmin form input, .salesSitesAdmin form textarea {
+  width: 99%;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.salesSitesAdmin form textarea {
+  height: 30vh;
+}
+
+.salesSitesAdmin form input {
+  height: 30px;
+  font-family: 30px;
+}
+
+.salesSitesAdmin form input {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.salesSitesAdmin form textarea {
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.salesSitesAdmin button {
+  margin-top: 5px;
+  background-color: rgb(200, 194, 194);
+  border-color: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  color: black;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.salesSitesAdmin button:hover {
+  font-weight: bold;
+  background-color: gray;
+  color: black;
+}
+
+
+.salesSitesItem {
+  border: 4px solid black;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+
+
+
+.app .courses {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.app .courses h1 {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.coursesContent {
+  display: flex;
+  flex-wrap: wrap;
+  /* Pozwala zawijać elementy na kolejne linie */
+}
+
+.coursesContentItem {
+  width: 33.33%;
+  /* Gwarantuje 3 elementy w rzędzie */
+  box-sizing: border-box;
+  /* Zapobiega przekroczeniu szerokości przez padding/border */
+  padding: 10px;
+  /* Opcjonalne odstępy między artykułami */
+}
+
+.coursesContentItem img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .coursesContentItem {
+    width: 100%;
+  }
+}
+
+.coursesContentItem button {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+  padding: 5px;
+  border-color: transparent;
+  margin-left: 5px;
+  cursor: pointer;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  font-size: 15px;
+}
+
+.coursesContentItem h1, .coursesContentItem h4 {
+  cursor: pointer;
+}
+
+.coursesContentItem h4 {
+  color: rgb(102, 102, 214);
+}

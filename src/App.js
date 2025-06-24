@@ -16,6 +16,8 @@ import BlogAdmin from './components/BlogAdmin';
 import SingleArticle from './components/SingleArticle';
 import NewUser from './components/NewUser';
 import ClientsAdmin from './components/ClientsAdmin';
+import SalesSitesAdmin from './components/SalesSitesAdmin';
+
 
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
         <Route path="/single-article" element={<SingleArticle/>} />
         <Route path="/new-user" element={<NewUser/>} />
         <Route path="/klienciadmin" element={<ClientsAdmin/>} />
+        <Route path="/stronysprzedazowekursowadmin" element={<SalesSitesAdmin/>} />
        </Routes>
     </Router>
     </Provider>
