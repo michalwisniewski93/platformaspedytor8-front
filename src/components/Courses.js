@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 const Courses = () => {
@@ -12,10 +14,36 @@ const Courses = () => {
         .then((response) => setCourses(response.data))
         .catch((err) => console.log('error fetching courses, error: ' + err))
     }, [])
+    
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const changeCourseTitle = (title) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_TITLE', temporaryCourseTitle: title})
+    const changeCourseImageUrl = (imageurl) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_IMAGE_URL', temporaryCourseImageUrl: imageurl})
+    const changeCourseNumberOfLessons = (numberoflessons) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_NUMBER_OF_LESSONS', temporaryCourseNumberOfLessons: numberoflessons})
+    const changeCoursePrice = (price) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_PRICE', temporaryCoursePrice: price})
+    const changeCoursePriceBeforeThirtyDays = (pricebeforethirtydays) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_PRICE_BEFORE_THIRTY_DAYS', temporaryCoursePriceBeforeThirtyDays: pricebeforethirtydays})
+    const changeCourseSalesContent = (salescontent) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_SALES_CONTENT', temporaryCourseSalesContent: salescontent})
+    const changeCourseLinkToYoutube = (linktoyoutube) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_LINK_TO_YOUTUBE', temporaryCourseLinkToYoutube: linktoyoutube})
+    const changeCourseContentList = (contentlist) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_CONTENT_LIST', temporaryCourseContentList: contentlist})
+    const changeCourseAuthor = (author) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_AUTHOR', temporaryCourseAuthor: author})
+    
 
 
-    const handleDisplayMore = () => {
 
+
+
+    const handleDisplayMore = (title, imageurl, numberoflessons, price, pricebeforethirtydays, salescontent, linktoyoutube, contentlist, author) => {
+        changeCourseTitle(title)
+        changeCourseImageUrl(imageurl)
+        changeCourseNumberOfLessons(numberoflessons)
+        changeCoursePrice(price)
+        changeCoursePriceBeforeThirtyDays(pricebeforethirtydays)
+        changeCourseSalesContent(salescontent)
+        changeCourseLinkToYoutube(linktoyoutube)
+        changeCourseContentList(contentlist)
+        changeCourseAuthor(author)
+        navigate('/kurs')
     }
 
     
@@ -29,10 +57,10 @@ const Courses = () => {
                     <h1>Kursy z certyfikatem</h1>
                     <div className="coursesContent">
                         {courses.map(course => <div className="coursesContentItem" key={course._id}>
-                         <img src={`http://localhost:5000/${course.imageurl}`} alt={course.title} />
+                         <img src={`http://localhost:5000/${course.imageurl}`} alt={course.title} onClick={handleDisplayMore} />
                          <h1 onClick={handleDisplayMore}>{course.title}</h1>
                          <h4 onClick={handleDisplayMore}>{course.price} zł</h4>
-                         <button onClick={handleDisplayMore}>Zobacz więcej</button>
+                         <button onClick={() => handleDisplayMore(course.title, course.imageurl, course.numberoflessons, course.price, course.pricebeforethirtydays, course.salescontent, course.linktoyoutube, course.contentlist, course.author)}>Zobacz więcej</button>
                         </div>)}
                     </div>
                  </div>

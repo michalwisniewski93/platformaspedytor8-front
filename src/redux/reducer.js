@@ -4,6 +4,15 @@ const initialState = {
     temporaryBlogAuthor: '',
     temporaryBlogTitle: '',
     temporaryBlogDescription: '',
+    temporaryCourseTitle: '',
+    temporaryCourseImageUrl: '',
+    temporaryCourseNumberOfLessons: 0,
+    temporaryCoursePrice: 0,
+    temporaryCoursePriceBeforeThirtyDays: 0,
+    temporaryCourseSalesContent: '',
+    temporaryCourseLinkToYoutube: '',
+    temporaryCourseContentList: '',
+    temporaryCourseAuthor: '',
 } 
 
 function reducer(state=initialState, action){
@@ -18,6 +27,24 @@ function reducer(state=initialState, action){
             return {...state, temporaryBlogTitle: action.temporaryBlogTitle}
         case 'CHANGE_TEMPORARY_BLOG_DESCRIPTION':
             return {...state, temporaryBlogDescription: action.temporaryBlogDescription}
+        case 'CHANGE_TEMPORARY_COURSE_TITLE':
+            return {...state, temporaryCourseTitle: action.temporaryCourseTitle}
+        case 'CHANGE_TEMPORARY_COURSE_IMAGE_URL':
+            return {...state, temporaryCourseImageUrl: action.temporaryCourseImageUrl}
+        case 'CHANGE_TEMPORARY_COURSE_NUMBER_OF_LESSONS':
+            return {...state, temporaryCourseNumberOfLessons: action.temporaryCourseNumberOfLessons}
+        case 'CHANGE_TEMPORARY_COURSE_PRICE':
+            return {...state, temporaryCoursePrice: action.temporaryCoursePrice}
+        case 'CHANGE_TEMPORARY_COURSE_PRICE_BEFORE_THIRTY_DAYS':
+            return {...state, temporaryCoursePriceBeforeThirtyDays: action.temporaryCoursePriceBeforeThirtyDays}
+        case 'CHANGE_TEMPORARY_COURSE_SALES_CONTENT':
+            return {...state, temporaryCourseSalesContent: action.temporaryCourseSalesContent}
+        case 'CHANGE_TEMPORARY_COURSE_LINK_TO_YOUTUBE':
+            return {...state, temporaryCourseLinkToYoutube: action.temporaryCourseLinkToYoutube}
+        case 'CHANGE_TEMPORARY_COURSE_CONTENT_LIST':
+            return {...state, temporaryCourseContentList: action.temporaryCourseContentList}
+        case 'CHANGE_TEMPORARY_COURSE_AUTHOR':
+            return {...state, temporaryCourseAuthor: action.temporaryCourseAuthor}
          default:
             return {...state}
     }

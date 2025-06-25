@@ -24,8 +24,7 @@ const AdminMainPage = () => {
                     <ul>
                         <li><Link to="/messages">Wiadomości ze strony kontakt</Link></li>
                         <li><Link to="/blogadmin">Blog</Link></li>
-                        <li><Link to="/kursyadmin">Kursy (Produkty)</Link></li>
-                        <li><Link to="/stronysprzedazowekursowadmin">Strony sprzedażowe kursów</Link></li>
+                        <li><Link to="/stronysprzedazowekursowadmin">Strony sprzedażowe i treść kursów</Link></li>
                         <li><Link to="/klienciadmin">Klienci</Link></li>
                         <li><Link to="/zamowieniaadmin">Zamówienia</Link></li>
                         <li><Link to="/fakturyadmin">Faktury</Link></li>

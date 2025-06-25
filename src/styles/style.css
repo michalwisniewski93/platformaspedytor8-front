@@ -772,16 +772,21 @@ button.buttonToDelete {
 .coursesContent {
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
+  /* Dodano odstęp między elementami */
   /* Pozwala zawijać elementy na kolejne linie */
 }
 
 .coursesContentItem {
-  width: 33.33%;
-  /* Gwarantuje 3 elementy w rzędzie */
+  width: calc(33.333% - 10px);
+  /* Skorygowana szerokość dla 3 elementów w rzędzie z uwzględnieniem gap */
   box-sizing: border-box;
   /* Zapobiega przekroczeniu szerokości przez padding/border */
   padding: 10px;
-  /* Opcjonalne odstępy między artykułami */
+  /* Opcjonalne odstępy wewnątrz artykułów */
+  border: 1px solid rgb(102, 102, 214);
+  /* Obramowanie elementu */
+  border-radius: 5px;
 }
 
 .coursesContentItem img {
@@ -793,6 +798,7 @@ button.buttonToDelete {
 @media (max-width: 600px) {
   .coursesContentItem {
     width: 100%;
+    /* Pełna szerokość na małych ekranach */
   }
 }
 
@@ -808,10 +814,111 @@ button.buttonToDelete {
   font-size: 15px;
 }
 
-.coursesContentItem h1, .coursesContentItem h4 {
+.coursesContentItem h1,
+.coursesContentItem h4,
+.coursesContentItem img {
   cursor: pointer;
 }
 
 .coursesContentItem h4 {
   color: rgb(102, 102, 214);
+
+}
+
+
+.singleProductPresentation {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.topProductPresentation {
+  display: flex;
+  flex-direction: row;
+}
+
+.productPresentationImage {
+  flex-basis: 50%;
+}
+
+.productPresentationPrimaryData {
+  flex-basis: 50%;
+}
+
+.productPresentationImage {
+  background-color: white;
+}
+
+.productPresentationPrimaryData {
+  background-color: white;
+  text-align: center;
+  /* Wycentrowanie tekstu i inline-block elementów */
+}
+
+.productPresentationPrimaryData button {
+  width: 80%;
+  cursor: pointer;
+  margin: 0 auto;
+  /* ✅ Wycentrowanie poziome */
+  display: block;
+  background-color: rgb(102, 102, 214);
+  border: 1px solid transparent;
+  padding: 5px;
+  font-size: 24px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.productPresentationPrimaryData button:hover {
+  background-color: black;
+}
+
+.productPresentationPrimaryData h5 {
+  margin-bottom: 15px;
+}
+
+.productPresentationImage img {
+  width: 100%;
+  height: auto;
+}
+
+@media(max-width: 600px) {
+  .topProductPresentation {
+    flex-direction: column;
+  }
+}
+
+
+.middleProductPresentation {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.productPresentationSecondaryData {
+  flex-basis: 70%;
+  background-color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  padding: 5px;
+}
+
+.productPresentationCourseContentList {
+  flex-basis: 30%;
+  background-color: rgb(102, 102, 214);
+  color: white;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+
+@media(max-width: 600px) {
+  .middleProductPresentation {
+    flex-direction: column;
+  }
+
+  .productPresentationSecondaryData, .productPresentationCourseContentList {
+    flex-basis: 100%;
+  }
 }

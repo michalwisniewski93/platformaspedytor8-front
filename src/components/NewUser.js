@@ -29,6 +29,8 @@ const NewUser = () => {
 
     const [customers, setCustomers] = useState([])
 
+    const [accesses, setAccesses] = useState('xyz, ')
+
 
     useEffect(() => {
     axios.get('http://localhost:5000/customers')
@@ -72,7 +74,7 @@ if (loginExists) {
         setCompanyRegon(null)
     }
     
-    axios.post("http://localhost:5000/customers", {name, surname, street, postcode, city, companyname, companystreet, companypostcode, companycity, email, invoice, login, newsletter, password, phonenumber, regulations, companynip, companyregon})
+    axios.post("http://localhost:5000/customers", {name, surname, street, postcode, city, companyname, companystreet, companypostcode, companycity, email, invoice, login, newsletter, password, phonenumber, regulations, companynip, companyregon, accesses})
         .then((response => setCustomers([...customers, response.data])))
         .catch(err => {
             console.error('Error adding customers', err)
@@ -102,6 +104,7 @@ if (loginExists) {
     setCompanyCity('')
     setCompanyNip('')
     setCompanyRegon('')
+    setAccesses('xyz, ')
 
     }
 

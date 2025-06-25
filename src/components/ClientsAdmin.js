@@ -31,6 +31,7 @@ const ClientsAdmin = () => {
          const [newsletter, setNewsletter] = useState(false)
          const [regulations, setRegulations] = useState(false)
          const [editingId, setEditingId] = useState(null)
+         const [accesses, setAccesses] = useState('')
 
      
 
@@ -49,7 +50,7 @@ const ClientsAdmin = () => {
 };
 
 
-   const handleEdit = (id, name, surname, street, postcode, city, companyname, companystreet, companypostcode, companycity, email, invoice, login, newsletter, password, phonenumber, regulations, companynip, companyregon) => {
+   const handleEdit = (id, name, surname, street, postcode, city, companyname, companystreet, companypostcode, companycity, email, invoice, login, newsletter, password, phonenumber, regulations, companynip, companyregon, accesses) => {
     alert('Uwaga! Jeśli kliknąłeś Edytuj dane klienta i pojawił Ci się formularz musisz kliknąć Zedytuj klienta by nie nadpisały się dane żadnego z klientów!!!!!')
     scrollToTop()
     setCustomerVisibilityEditForm(true)
@@ -62,6 +63,7 @@ const ClientsAdmin = () => {
     setPostCode(postcode || '')
     setCity(city || '')
     setEmail(email || '')
+    setAccesses(accesses || '')
     
 setInvoice(!!invoice)
 
@@ -103,7 +105,7 @@ if (invoice) {
     const companynip = companyNip
     const companyregon = companyRegon
 
-    axios.put(`http://localhost:5000/customers/${editingId}`, {name, surname, street, postcode, city, companyname, companystreet, companypostcode, companycity, email, invoice, login, newsletter, password, phonenumber, regulations, companynip, companyregon})
+    axios.put(`http://localhost:5000/customers/${editingId}`, {name, surname, street, postcode, city, companyname, companystreet, companypostcode, companycity, email, invoice, login, newsletter, password, phonenumber, regulations, companynip, companyregon, accesses})
    .then((response) => {
         setCustomers(customers.map(customer => customer._id === editingId ? response.data : customer));
         setName('')
@@ -115,6 +117,7 @@ if (invoice) {
          setPostCode('')
          setCity('')
          setEmail('')
+         setAccesses('')
          setInvoice(false)
          setCompanyName('')
          setCompanyStreet('')
@@ -229,6 +232,10 @@ if (invoice) {
                 Akceptacja regulaminu sklepu (<a href="/regulamin" target="_blank" rel="noopener noreferrer">Regulamin sklepu</a>):
                 <input type="checkbox"  checked={regulations} onChange={(e) => setRegulations(e.target.checked)}/>
             </label>
+            <label>
+                Dostępy:
+                <input type="text"  value={accesses} onChange={(e) => setAccesses(e.target.value)}/>
+            </label>
             <button className="buttonToEdit">Zedytuj klienta</button>
             <span style={{fontWeight: 'bold', color: 'red', fontSize: '20px'}}>UWAGA !!! NAWET JEŻELI ŻADNEGO POLA NIE EDYTUJESZ KLIKNIJ ZEDYTUJ KLIENTA, JEŻELI TEGO NIE ZROBISZ TO POLA NP. NIP REGON MOGĄ SIĘ PRZEKOPIOWAĆ Z KLIENTA KTÓRY MA FIRMĘ NA KLIENTA KTÓRY NIE MA FIRMY</span>
            </div>
@@ -248,6 +255,7 @@ if (invoice) {
                         {customer.invoice ? <p><strong>Adres firmy:</strong> {customer.companystreet} {customer.companypostcode} {customer.companycity}</p>: null}
                         {customer.invoice ? <p><strong>NIP:</strong> {customer.companynip}</p>: null}
                         {customer.invoice ? <p><strong>REGON:</strong> {customer.companyregon}</p>: null}
+                        <p><strong>dostępy:</strong> {customer.accesses}</p>
                         <button className="buttonToEdit" onClick={() => handleEdit(customer._id, customer.name, customer.surname, customer.street, customer.postcode, customer.city, customer.companyname, customer.companystreet, customer.companypostcode, customer.companycity, customer.email, customer.invoice, customer.login, customer.newsletter, customer.password, customer.phonenumber, customer.regulations, customer.companynip, customer.companyregon)}>Edytuj dane klienta</button>
                         <button className="buttonToDelete" onClick={() => handleDelete(customer._id)}>Usuń klienta</button>
                     </div>)}

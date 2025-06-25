@@ -18,7 +18,10 @@ const SalesSitesAdmin = () => {
   const [contentlist, setContentlist] = useState('');
   const [author, setAuthor] = useState('');
   const [file, setFile] = useState(null);
+  const [coursecontent, setCoursecontent] = useState('')
+  const [courselinks, setCourselinks] = useState('')
   const [editingSite, setEditingSite] = useState(null);
+  const [accesscode, setAccesscode] = useState('')
 
   useEffect(() => {
     axios.get('http://localhost:5000/salessites')
@@ -40,7 +43,10 @@ const SalesSitesAdmin = () => {
     setContentlist('');
     setAuthor('');
     setImageUrl('');
+    setCoursecontent('')
+    setCourselinks('')
     setFile(null);
+    setAccesscode('')
   };
 
   const handleSubmit = async (e) => {
@@ -64,7 +70,7 @@ const SalesSitesAdmin = () => {
       const response = await axios.post("http://localhost:5000/salessites", {
         title, imageurl, numberoflessons, price,
         pricebeforethirtydays, salescontent, linktoyoutube,
-        contentlist, author
+        contentlist, author, coursecontent, courselinks, accesscode
       });
 
       setSalessites([...salessites, response.data]);
@@ -95,6 +101,9 @@ const SalesSitesAdmin = () => {
     setContentlist(site.contentlist);
     setAuthor(site.author);
     setImageUrl(site.imageurl);
+    setCoursecontent(site.coursecontent)
+    setCourselinks(site.courselinks)
+    setAccesscode(site.accesscode)
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -128,6 +137,9 @@ const SalesSitesAdmin = () => {
       linktoyoutube,
       contentlist,
       author,
+      coursecontent,
+      courselinks,
+      accesscode
     })
       .then((response) => {
         setSalessites(salessites.map(site => site._id === editingSite._id ? response.data : site));
@@ -175,6 +187,9 @@ const SalesSitesAdmin = () => {
                 <label>Link do YouTube: <input type="text" value={linktoyoutube} onChange={(e) => setLinktoyoutube(e.target.value)} /></label>
                 <label>Lista materiałów: <textarea value={contentlist} onChange={(e) => setContentlist(e.target.value)} /></label>
                 <label>Autor: <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} /></label>
+                <label>Treść kursu z identyfikatorami: <textarea  value={coursecontent} onChange={(e) => setCoursecontent(e.target.value)}></textarea></label>
+                <label>Linki kursu (kotwice linkujące): <textarea  value={courselinks} onChange={(e) => setCourselinks(e.target.value)}></textarea></label>
+                <label>Kod dostępu: <input type="text" value={accesscode} onChange={(e) => setAccesscode(e.target.value)}/></label>
                 <button className="buttonToEdit">Zapisz zmiany</button>
                 <button type="button" onClick={() => { setEditingSite(null); resetFormFields(); }}>Anuluj edycję</button>
               </form>
@@ -191,6 +206,9 @@ const SalesSitesAdmin = () => {
                 <label>Link do YouTube: <input type="text" value={linktoyoutube} onChange={(e) => setLinktoyoutube(e.target.value)} /></label>
                 <label>Lista materiałów: <textarea value={contentlist} onChange={(e) => setContentlist(e.target.value)} /></label>
                 <label>Autor: <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} /></label>
+                 <label>Treść kursu z identyfikatorami: <textarea  value={coursecontent} onChange={(e) => setCoursecontent(e.target.value)}></textarea></label>
+                 <label>Linki kursu (kotwice linkujące): <textarea  value={courselinks} onChange={(e) => setCourselinks(e.target.value)}></textarea></label>
+                <label>Kod dostępu: <input type="text" value={accesscode} onChange={(e) => setAccesscode(e.target.value)} /></label>
                 <button className="buttonToEdit">Dodaj kurs</button>
               </form>
             )}
@@ -223,6 +241,15 @@ const SalesSitesAdmin = () => {
                     <div style={{ border: '1px dotted black' }} dangerouslySetInnerHTML={{ __html: site.contentlist }} />
                   </div>
                   <h4>Autor: {site.author}</h4>
+                  <div>
+                    <h1>Treść kursu z identyfikatorami:</h1>
+                    <div style={{ border: '1px dotted black' }} dangerouslySetInnerHTML={{ __html: site.coursecontent }} />
+                  </div>
+                  <div>
+                    <h1>Linki kursu (kotwice linkujące):</h1>
+                    <div style={{ border: '1px dotted black' }} dangerouslySetInnerHTML={{ __html: site.courselinks }} />
+                  </div>
+                  <h4>Kod dostępu: {site.accesscode}</h4>
                   <button onClick={() => handleDeleteSalessite(site._id)}>Usuń stronę</button>
                   <button onClick={() => handleEditSalessite(site)}>Edytuj stronę</button>
                 </div>
