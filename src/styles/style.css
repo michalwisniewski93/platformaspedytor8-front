@@ -226,6 +226,7 @@ body {
   align-items: center;
   justify-content: flex-end;
   padding: 5px;
+  flex-wrap: wrap;
 }
 
 .logging button {
@@ -920,5 +921,116 @@ button.buttonToDelete {
 
   .productPresentationSecondaryData, .productPresentationCourseContentList {
     flex-basis: 100%;
+  }
+}
+
+
+.loggingPanel {
+  background-color: rgb(102, 102, 214);
+  color: black;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.loggingPanel form {
+  margin-left: 5px;
+}
+
+.loggingPanel form input {
+  display: block;
+}
+
+.loggingPanel form input {
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  height: 25px;
+  line-height: 20px;
+  font-size: 20px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+
+.loggingPanel form button {
+  background-color: black;
+  color: white;
+  border-radius: 7px;
+  padding: 5px;
+  border-color: transparent;
+  cursor: pointer;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.loggingPanel button:hover {
+  color: white;
+  background-color: rgb(54, 52, 52);
+}
+
+.loggingPanel h3 {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.loggingPanel h3 a {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: white;
+  color: white;
+}
+
+.loggingPanel h3 {
+  display: block;
+  padding-bottom: 5px;
+}
+
+.logging p {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+
+
+.createNewPassword h1, .createNewPassword h6 {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.createNewPassword form label, .createNewPassword form input {
+  display: block;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.createNewPassword form input {
+  border: 1px solid black;
+  border-radius: 3px;
+  width: 99%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 15px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+
+
+.createNewPassword form button {
+  background-color: black;
+  color: white;
+  border-color: transparent;
+  border-radius: 5px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 3px;
+}
+
+.createNewPassword form button:hover {
+  background-color: gray;
+  color: black;
+}
+
+@media(max-width: 600px) {
+
+
+  .createNewPassword form input {
+    width: 80%;
   }
 }

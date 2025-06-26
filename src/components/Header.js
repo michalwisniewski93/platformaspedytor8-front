@@ -1,12 +1,26 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { FaTruck } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import axios from 'axios'
 
 
 const Header = () => {
 
 const navigate = useNavigate()
+
+const [isLoggingPanelVisible, setIsLoggingPanelVisible] = useState(false)
+
+const [login, setLogin] = useState('')
+const [password, setPassword] = useState('')
+const [customers, setCustomers] = useState([])
+const [captchaA, setCaptchaA] = useState(0);
+const [captchaB, setCaptchaB] = useState(0);
+const [captchaAnswer, setCaptchaAnswer] = useState('');
+const [captchaValid, setCaptchaValid] = useState(true);
+const [user, setUser] = useState('')
+
+
 
  useEffect(() => {
     const menuIcon = document.querySelector('.menuicon');
@@ -37,8 +51,122 @@ const navigate = useNavigate()
   }
 };
 
+
+     
+  useEffect(() => {
+    axios.get('http://localhost:5000/customers')
+    .then((response) => setCustomers(response.data))
+    .catch((err) => console.log('error fetching customers, error: ' + err))
+   }, [])
+
+
+   const generateCaptcha = () => {
+     const a = Math.floor(Math.random() * 10) + 1;
+     const b = Math.floor(Math.random() * 10) + 1;
+     setCaptchaA(a);
+     setCaptchaB(b);
+     setCaptchaAnswer('');
+  }
+
+   useEffect(() => {
+      generateCaptcha(); // Wygeneruj na początku
+    }, []);
+
 const handleSignIn = () => {
   navigate('/new-user')
+}
+
+
+const handleLoggingPanelVisible = () => {
+  setIsLoggingPanelVisible(true)
+}
+
+
+function setCookie(name, value, days) {
+  const maxAge = days * 24 * 60 * 60;
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
+}
+
+
+const handleSubmit = (e) => {
+  e.preventDefault()
+
+
+  const correctAnswer = captchaA + captchaB;
+    if (parseInt(captchaAnswer) !== correctAnswer) {
+      setCaptchaValid(false);
+      generateCaptcha(); // Wygeneruj nowe pytanie po błędzie
+      return;
+    }
+
+    setCaptchaValid(true);
+
+
+  
+const found = customers.find(customer => 
+        customer.login === login && customer.password === password
+    );
+
+    if(found){
+        alert('✅ Zalogowano pomyślnie')
+        setIsLoggingPanelVisible(false)
+        setCookie("user", login + ';' + password, 30);
+
+
+        const userCookie = getCookie('user');
+          if (userCookie) {
+            setUser(userCookie);
+      
+          } else {
+              alert('Nie znaleziono ciasteczka "user".');
+        }
+
+       
+    } else {
+        alert ('Podałeś niepoprawny login lub hasło.')
+    }
+
+
+      // Tu Resetuj formularz
+    
+    generateCaptcha();
+    setLogin('')
+    setPassword('')
+}
+
+
+const handleLogout = () => {
+    deleteCookie('user');
+    setUser(null);
+  };
+
+
+function getCookie(name) {
+  const cookies = document.cookie.split('; ');
+  for (const cookie of cookies) {
+    const [key, value] = cookie.split('=');
+    if (key === name) {
+      return decodeURIComponent(value);
+    }
+  }
+  return null;
+}
+
+function deleteCookie(name) {
+  document.cookie = `${name}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+}
+
+
+const handleMyCourses = () => {
+  navigate('/moje-kursy')
+}
+
+const handleMyOrders = () => {
+  navigate('/moje-zamowienia')
+}
+
+const handleMyProfile = () => {
+  navigate('/moj-profil')
 }
 
 
@@ -58,9 +186,42 @@ const handleSignIn = () => {
           </div>
         </div>
         <div className="logging">
-          <button>Zaloguj się</button>
-          <button onClick={handleSignIn}>Zarejestruj się</button>
+          
+           
+          {!isLoggingPanelVisible && !getCookie('user') && (
+                      <button onClick={handleLoggingPanelVisible}>Zaloguj się</button>
+          )}
+          <p>{getCookie('user') ? `Zalogowano jako: ${getCookie('user').split(';')[0]}` : null}</p>
+          {getCookie('user') ? <button onClick={handleMyProfile}>Profil</button> : null }
+          {getCookie('user') ? <button onClick={handleMyCourses}>Moje kursy</button> : null }
+          {getCookie('user') ? <button onClick={handleMyOrders}>Moje zamówienia</button> : null }
+          {getCookie('user') ? <button onClick={handleLogout}>Wyloguj się</button> : null }
+          {getCookie('user') ? null : <button onClick={handleSignIn}>Zarejestruj się</button> }
+
+          
         </div>
+        {isLoggingPanelVisible ? (
+          <div className="loggingPanel">
+          <h1>Zaloguj się</h1>
+          <form action="" >
+            <label>login: <input type="text" value={login} onChange={(e) => setLogin(e.target.value)}/></label>
+            <label>hasło: <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}/></label>
+            <label>
+        Ile to jest {captchaA} + {captchaB}? &nbsp;
+        <input className="captcha"
+          type="number"
+          value={captchaAnswer}
+          onChange={(e) => setCaptchaAnswer(e.target.value)}
+          required
+        />
+      </label>
+      {!captchaValid && <p style={{ color: 'red' }}>❌ Niepoprawna odpowiedź. Spróbuj ponownie.</p>}
+            <button onClick={handleSubmit}>Zaloguj się</button>
+          </form>
+          <h3>Jeżeli nie masz jeszcze konta <Link to="/new-user">Zarejestruj się</Link>. Jeżeli nie pamiętasz hasła <Link to="/change-password">Wygeneruj nowe hasło</Link>.</h3>
+        </div>
+        ) : null}
+        
         </>
     )
 }

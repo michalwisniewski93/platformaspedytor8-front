@@ -18,6 +18,10 @@ import NewUser from './components/NewUser';
 import ClientsAdmin from './components/ClientsAdmin';
 import SalesSitesAdmin from './components/SalesSitesAdmin';
 import SingleCourse from './components/SingleCourse';
+import NewPassword from './components/NewPassword';
+import MyCourses from './components/MyCourses';
+import MyOrders from './components/MyOrders';
+import MyProfile from './components/MyProfile';
 
 
 
@@ -43,6 +47,10 @@ function App() {
         <Route path="/klienciadmin" element={<ClientsAdmin/>} />
         <Route path="/stronysprzedazowekursowadmin" element={<SalesSitesAdmin/>} />
         <Route path="/kurs" element={<SingleCourse/>} />
+        <Route path="/change-password" element={<NewPassword/>} />
+        <Route path="/moje-kursy" element={<MyCourses/>} />
+        <Route path="/moje-zamowienia" element={<MyOrders/>} />
+         <Route path="/moj-profil" element={<MyProfile/>} />
        </Routes>
     </Router>
     </Provider>

@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 const NewUser = () => {
-
+    const [error, setError] = useState(''); // ← TO DODAJ jeśli brakuje
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
     const [login, setLogin] = useState('')
@@ -108,6 +108,17 @@ if (loginExists) {
 
     }
 
+    const handleLoginChange = (e) => {
+    const value = e.target.value;
+    setLogin(value);
+
+    // Sprawdzenie, czy jest średnik
+    if (value.includes(';')) {
+      setError('Nie używaj średnika (;) w loginie');
+    } else {
+      setError('');
+    }
+  };
 
     return (
         <div className="app">
@@ -126,7 +137,7 @@ if (loginExists) {
             </label>
             <label>
                 Login:
-                <input type="text" value={login} onChange={(e) => setLogin(e.target.value)}/>
+                <input type="text" pattern="^[^;]*$" title="Nie używaj średnika (;)" value={login} onChange={handleLoginChange}/>
             </label>
             <label>
                 Hasło:
