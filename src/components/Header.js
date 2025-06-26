@@ -110,7 +110,9 @@ const found = customers.find(customer =>
     if(found){
         alert('✅ Zalogowano pomyślnie')
         setIsLoggingPanelVisible(false)
+        setCookie('perm', 'ok', 30);
         setCookie("user", login + ';' + password, 30);
+       
 
 
         const userCookie = getCookie('user');
@@ -120,6 +122,8 @@ const found = customers.find(customer =>
           } else {
               alert('Nie znaleziono ciasteczka "user".');
         }
+
+
 
        
     } else {
@@ -137,7 +141,9 @@ const found = customers.find(customer =>
 
 const handleLogout = () => {
     deleteCookie('user');
+    deleteCookie('perm')
     setUser(null);
+    navigate('/')
   };
 
 

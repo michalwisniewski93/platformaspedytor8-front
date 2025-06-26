@@ -330,7 +330,7 @@ body {
   margin-top: 5px;
 }
 
-h3.adminInfo1 {
+h3.adminInfo1, p.infoAboutChangeData {
   background-color: rgb(243, 213, 218);
   border-radius: 3px;
   border: 1px solid rgb(184, 68, 88);
@@ -565,29 +565,29 @@ input.captcha {
 }
 
 
-form.setNewAccount {
+form.setNewAccount, form.editMyProfileData {
   display: flex;
   flex-direction: row;
   gap: 25px;
 }
 
-form.setNewAccount div {
+form.setNewAccount div, form.editMyProfileData div {
   flex-basis: 20%;
 }
 
 @media(max-width: 600px) {
-  form.setNewAccount {
+  form.setNewAccount, form.editMyProfileData {
     flex-direction: column;
   }
 }
 
 
 
-form.setNewAccount label, form.setNewAccount input, form.setNewAccount textarea {
+form.setNewAccount label, form.setNewAccount input, form.setNewAccount textarea, form.editMyProfileData label, form.editMyProfileData input, form.editMyProfileData textarea {
   display: block;
 }
 
-form.setNewAccount input, form.setNewAccount textarea {
+form.setNewAccount input, form.setNewAccount textarea, form.editMyProfileData input {
   border: 1px solid black;
   border-radius: 3px;
   width: 99%;
@@ -601,7 +601,7 @@ form.setNewAccount textarea {
   height: 100px;
 }
 
-form.setNewAccount button {
+form.setNewAccount button, form.editMyProfileData button {
   background-color: black;
   color: white;
   border-color: transparent;
@@ -612,12 +612,12 @@ form.setNewAccount button {
   margin-top: 5px;
 }
 
-form.setNewAccount button:hover {
+form.setNewAccount button:hover, form.editMyProfileData button:hover {
   color: white;
   background-color: gray;
 }
 
-form.setNewAccount input[type="checkbox"] {
+form.setNewAccount input[type="checkbox"], form.editMyProfileData input[type="checkbox"] {
   display: inline;
   width: 20px;
   height: 20px;
@@ -625,6 +625,15 @@ form.setNewAccount input[type="checkbox"] {
   vertical-align: middle;
 }
 
+form.editMyProfileData label {
+  color: black;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+form.editMyProfileData {
+  background-color: rgb(102, 102, 214);
+  padding-bottom: 10px;
+}
 
 .clientsAdminWrapper {
   background-color: black;
@@ -1033,4 +1042,9 @@ button.buttonToDelete {
   .createNewPassword form input {
     width: 80%;
   }
+}
+
+
+.myProfile h1, .myProfile {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
 }
