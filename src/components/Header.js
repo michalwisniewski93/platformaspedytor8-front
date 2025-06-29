@@ -19,8 +19,48 @@ const [captchaB, setCaptchaB] = useState(0);
 const [captchaAnswer, setCaptchaAnswer] = useState('');
 const [captchaValid, setCaptchaValid] = useState(true);
 const [user, setUser] = useState('')
+const [basketLength, setBasketLength] = useState(0);
+const [basketCount, setBasketCount] = useState(0);
+
+function setCookie(name, value, days) {
+  const maxAge = days * 24 * 60 * 60;
+  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
+}
+
+useEffect(() => {
+    const basket = localStorage.getItem('basket');
+
+    // Jeśli nie ma koszyka w localStorage, ustaw pustą tablicę
+    if (!basket) {
+      localStorage.setItem('basket', JSON.stringify([]));
+    }
+  }, []);
 
 
+
+  useEffect(() => {
+    const basket = localStorage.getItem('basket');
+    if (basket) {
+      try {
+        const parsedBasket = JSON.parse(basket);
+
+        setBasketLength(parsedBasket.length);
+
+        const totalPrice = parsedBasket.reduce((sum, item) => {
+          return sum + (Number(item.price) || 0);
+        }, 0);
+
+        setBasketCount(totalPrice);
+      } catch (error) {
+        console.error('Błąd parsowania basket z localStorage:', error);
+        setBasketLength(0);
+        setBasketCount(0);
+      }
+    } else {
+      setBasketLength(0);
+      setBasketCount(0);
+    }
+  });
 
  useEffect(() => {
     const menuIcon = document.querySelector('.menuicon');
@@ -82,10 +122,7 @@ const handleLoggingPanelVisible = () => {
 }
 
 
-function setCookie(name, value, days) {
-  const maxAge = days * 24 * 60 * 60;
-  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}`;
-}
+
 
 
 const handleSubmit = (e) => {
@@ -175,6 +212,10 @@ const handleMyProfile = () => {
   navigate('/moj-profil')
 }
 
+const handleClickOnBasket = () => {
+  navigate('/basket')
+}
+
 
     return (
         <>
@@ -203,6 +244,7 @@ const handleMyProfile = () => {
           {getCookie('user') ? <button onClick={handleMyOrders}>Moje zamówienia</button> : null }
           {getCookie('user') ? <button onClick={handleLogout}>Wyloguj się</button> : null }
           {getCookie('user') ? null : <button onClick={handleSignIn}>Zarejestruj się</button> }
+          <button onClick={handleClickOnBasket}>Koszyk ({basketLength})</button>
 
           
         </div>

@@ -1,0 +1,39 @@
+/* Tabela widoczna tylko na dużych ekranach */
+.basket-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.basket-table th,
+.basket-table td {
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.basket-list {
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+/* Widok mobilny - przy szerokości max 600px */
+@media (max-width: 600px) {
+    .basket-table {
+        display: none;
+    }
+
+    .basket-list {
+        display: block;
+    }
+
+    .basket-list-item {
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 1rem;
+    }
+
+    .basket-list-item div {
+        margin: 4px 0;
+    }
+}

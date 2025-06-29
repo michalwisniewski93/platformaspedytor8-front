@@ -27,13 +27,15 @@ const Courses = () => {
     const changeCourseLinkToYoutube = (linktoyoutube) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_LINK_TO_YOUTUBE', temporaryCourseLinkToYoutube: linktoyoutube})
     const changeCourseContentList = (contentlist) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_CONTENT_LIST', temporaryCourseContentList: contentlist})
     const changeCourseAuthor = (author) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_AUTHOR', temporaryCourseAuthor: author})
+    const changeCourseId  = (id) => dispatch({type: 'CHANGE_TEMPORARY_COURSE_ID', temporaryCourseId: id})
     
 
 
 
 
 
-    const handleDisplayMore = (title, imageurl, numberoflessons, price, pricebeforethirtydays, salescontent, linktoyoutube, contentlist, author) => {
+    const handleDisplayMore = (id, title, imageurl, numberoflessons, price, pricebeforethirtydays, salescontent, linktoyoutube, contentlist, author) => {
+        changeCourseId(id)
         changeCourseTitle(title)
         changeCourseImageUrl(imageurl)
         changeCourseNumberOfLessons(numberoflessons)
@@ -60,7 +62,7 @@ const Courses = () => {
                          <img src={`http://localhost:5000/${course.imageurl}`} alt={course.title} onClick={handleDisplayMore} />
                          <h1 onClick={handleDisplayMore}>{course.title}</h1>
                          <h4 onClick={handleDisplayMore}>{course.price} zł</h4>
-                         <button onClick={() => handleDisplayMore(course.title, course.imageurl, course.numberoflessons, course.price, course.pricebeforethirtydays, course.salescontent, course.linktoyoutube, course.contentlist, course.author)}>Zobacz więcej</button>
+                         <button onClick={() => handleDisplayMore(course._id, course.title, course.imageurl, course.numberoflessons, course.price, course.pricebeforethirtydays, course.salescontent, course.linktoyoutube, course.contentlist, course.author)}>Zobacz więcej</button>
                         </div>)}
                     </div>
                  </div>

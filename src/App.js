@@ -22,6 +22,11 @@ import NewPassword from './components/NewPassword';
 import MyCourses from './components/MyCourses';
 import MyOrders from './components/MyOrders';
 import MyProfile from './components/MyProfile';
+import Basket from './components/Basket';
+import Payment from './components/Payment';
+import SignUpOrSignIn from './components/SignUpOrSignIn';
+import RegisterToMakePayment from './components/RegisterToMakePayment';
+import LogInToMakePayment from './components/LogInToMakePayment';
 
 
 
@@ -50,7 +55,12 @@ function App() {
         <Route path="/change-password" element={<NewPassword/>} />
         <Route path="/moje-kursy" element={<MyCourses/>} />
         <Route path="/moje-zamowienia" element={<MyOrders/>} />
-         <Route path="/moj-profil" element={<MyProfile/>} />
+        <Route path="/moj-profil" element={<MyProfile/>} />
+        <Route path="/basket" element={<Basket/>} />
+        <Route path="/payment" element={<Payment/>} />
+        <Route path="/sign-up-or-sign-in" element={<SignUpOrSignIn/>} />
+        <Route path="/register-to-make-payment" element={<RegisterToMakePayment/>} />
+        <Route path="/log-in-to-make-payment" element={<LogInToMakePayment/>} />
        </Routes>
     </Router>
     </Provider>

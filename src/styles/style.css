@@ -1048,3 +1048,121 @@ button.buttonToDelete {
 .myProfile h1, .myProfile {
   font-family: 'Funnel Display', 'Verdana', sans-serif;
 }
+
+
+.basketPresentationField, .basketPresentationField h1, .basketPresentationField button {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.basketPresentationField button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+button.buyNowButton {
+  height: 40px;
+  width: 160px;
+  padding: 0;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 0px;
+  text-align: center;
+
+}
+
+.payment-summary {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-right: 5px;
+  margin-top: 20px;
+}
+
+.buyNowButton {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.buyNowButton:hover {
+  background-color: rgb(102, 102, 214);
+}
+
+
+
+.signInOrSignUp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.signInOrSignUp .box {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s;
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}
+
+.signInOrSignUp .box:hover {
+  transform: translateY(-5px);
+}
+
+.signInOrSignUp .box h2 {
+  margin-top: 0;
+}
+
+.signInOrSignUp .box p {
+  margin: 10px 0 20px;
+}
+
+.signInOrSignUp .box button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(102, 102, 214);
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+  color: white;
+  cursor: pointer;
+}
+
+.signInOrSignUp .box button:hover {
+  background-color: rgb(102, 102, 214);
+  ;
+}
+
+@media (max-width: 640px) {
+  .signInOrSignUp {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .signInOrSignUp .box {
+    width: 90%;
+    max-width: 350px;
+  }
+}
+
+.logInToMakePayment, .logInToMakePayment h1 {
+  font-family: 'Funnel Display', 'Verdana', sans-serif;
+}

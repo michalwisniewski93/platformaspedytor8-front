@@ -13,6 +13,7 @@ const initialState = {
     temporaryCourseLinkToYoutube: '',
     temporaryCourseContentList: '',
     temporaryCourseAuthor: '',
+    temporaryCourseId: '',
 } 
 
 function reducer(state=initialState, action){
@@ -45,6 +46,8 @@ function reducer(state=initialState, action){
             return {...state, temporaryCourseContentList: action.temporaryCourseContentList}
         case 'CHANGE_TEMPORARY_COURSE_AUTHOR':
             return {...state, temporaryCourseAuthor: action.temporaryCourseAuthor}
+        case 'CHANGE_TEMPORARY_COURSE_ID':
+            return {...state, temporaryCourseId: action.temporaryCourseId}
          default:
             return {...state}
     }
