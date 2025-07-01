@@ -108,7 +108,7 @@ const found = customers.find(customer =>
     generateCaptcha();
     setLogin('')
     setPassword('')
-    navigate('/payment')
+    navigate('/basket')
 }
 
 

@@ -3,23 +3,54 @@ import '../styles/basket.css'; // Import stylów
 import Header from './Header';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
 
 const Basket = () => {
   const [basket, setBasket] = useState([]);
+  const [accesses, setAccesses] = useState('');
+ 
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const storedBasket = localStorage.getItem('basket');
-    if (storedBasket) {
-      try {
-        setBasket(JSON.parse(storedBasket));
-      } catch (error) {
-        console.error('Błąd parsowania basket z localStorage:', error);
-        setBasket([]);
-      }
+  
+  const stripePromise = loadStripe('pk_live_51RfLvJAmHEF4S4jOFufZ6W3hId3WQPoYP89kmoLS57Anyn33rI0Ndt0Kr2rYSIIly1a7z5qrWseCHZ6dAGRrncAe00TShy05sf'); // Użyj swojego klucza publicznego Stripe
+  
+
+
+
+
+  const generateAccesses = (basketItems) => {
+  return basketItems.map(item => item.accesscode).join(';');
+};
+
+
+function setCookie(name, value, days) {
+  const now = new Date();
+  now.setTime(now.getTime() + days * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + now.toUTCString();
+  document.cookie = `${name}=${encodeURIComponent(value)}; ${expires}; path=/`;
+}
+
+
+
+
+useEffect(() => {
+  const storedBasket = localStorage.getItem('basket');
+  if (storedBasket) {
+    try {
+      const parsedBasket = JSON.parse(storedBasket);
+      setBasket(parsedBasket);
+      setAccesses(generateAccesses(parsedBasket));
+    } catch (error) {
+      console.error('Błąd parsowania basket z localStorage:', error);
+      setBasket([]);
+      setAccesses('');
     }
-  }, []);
+  }
+}, []);
+
+
+
 
   function getCookie(name) {
   const cookies = document.cookie.split('; ');
@@ -32,11 +63,16 @@ const Basket = () => {
   return null;
 }
 
-  const handleRemove = (id) => {
-    const updatedBasket = basket.filter(item => item.id !== id);
-    setBasket(updatedBasket);
-    localStorage.setItem('basket', JSON.stringify(updatedBasket));
-  };
+
+
+const handleRemove = (id) => {
+  const updatedBasket = basket.filter(item => item.id !== id);
+  setBasket(updatedBasket);
+  localStorage.setItem('basket', JSON.stringify(updatedBasket));
+  setAccesses(generateAccesses(updatedBasket));
+};
+
+
 
   const totalPrice = basket.reduce((sum, item) => sum + parseFloat(item.price), 0);
 
@@ -46,10 +82,40 @@ const Basket = () => {
 
 
 
-  const handleBuyNow = () => {
+  const  handleBuyNow = async () => {
+    setCookie('newaccesses', accesses, 30)
+
+
     const userCookie = getCookie('user')
     if(userCookie){
-      navigate('/payment') 
+       try {
+
+        sessionStorage.setItem('paymentStarted', 'true');
+
+    const response = await fetch('http://localhost:5000/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ items: basket }),
+    });
+
+    const session = await response.json();
+    console.log('session z backendu:', session);
+
+    const stripe = await stripePromise;
+    const result = await stripe.redirectToCheckout({
+      sessionId: session.id
+    });
+
+    if (result.error) {
+      console.error(result.error.message);
+    }
+  } catch (error) {
+    sessionStorage.removeItem('paymentStarted');
+    console.error('Błąd podczas tworzenia sesji Stripe:', error);
+  }
+      
     }else{
       navigate('/sign-up-or-sign-in')
     }
@@ -112,7 +178,10 @@ const Basket = () => {
       <div className="payment-summary">
           <p><strong>Do zapłaty: {totalPrice.toFixed(2)} zł</strong></p>
           <button className="buyNowButton" onClick={handleBuyNow}>Zapłać teraz</button>
+          
+         
       </div>
+      
     </div>
         <Footer/>
         </div>

@@ -23,11 +23,11 @@ import MyCourses from './components/MyCourses';
 import MyOrders from './components/MyOrders';
 import MyProfile from './components/MyProfile';
 import Basket from './components/Basket';
-import Payment from './components/Payment';
 import SignUpOrSignIn from './components/SignUpOrSignIn';
 import RegisterToMakePayment from './components/RegisterToMakePayment';
 import LogInToMakePayment from './components/LogInToMakePayment';
-
+import SuccessPage from './components/SuccessPage';
+import CancelPage from './components/CancelPage';
 
 
 function App() {
@@ -57,10 +57,11 @@ function App() {
         <Route path="/moje-zamowienia" element={<MyOrders/>} />
         <Route path="/moj-profil" element={<MyProfile/>} />
         <Route path="/basket" element={<Basket/>} />
-        <Route path="/payment" element={<Payment/>} />
         <Route path="/sign-up-or-sign-in" element={<SignUpOrSignIn/>} />
         <Route path="/register-to-make-payment" element={<RegisterToMakePayment/>} />
         <Route path="/log-in-to-make-payment" element={<LogInToMakePayment/>} />
+        <Route path="/success" element={<SuccessPage/>} />
+        <Route path="/cancel" element={<CancelPage/>} />
        </Routes>
     </Router>
     </Provider>

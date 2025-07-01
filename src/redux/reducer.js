@@ -14,6 +14,7 @@ const initialState = {
     temporaryCourseContentList: '',
     temporaryCourseAuthor: '',
     temporaryCourseId: '',
+    temporaryCourseAccessCode: '',
 } 
 
 function reducer(state=initialState, action){
@@ -48,6 +49,8 @@ function reducer(state=initialState, action){
             return {...state, temporaryCourseAuthor: action.temporaryCourseAuthor}
         case 'CHANGE_TEMPORARY_COURSE_ID':
             return {...state, temporaryCourseId: action.temporaryCourseId}
+        case 'CHANGE_TEMPORARY_COURSE_ACCESS_CODE':
+            return {...state, temporaryCourseAccessCode: action.temporaryCourseAccessCode}
          default:
             return {...state}
     }

@@ -15,6 +15,7 @@ const SingleCourse = () => {
   const contentlist = useSelector(state => state.temporaryCourseContentList);
   const author = useSelector(state => state.temporaryCourseAuthor);
   const id = useSelector(state => state.temporaryCourseId);
+  const accesscode = useSelector(state => state.temporaryCourseAccessCode)
   const [temporaryBasket, setTemporaryBasket] = useState([]);
 
   const navigate = useNavigate();
@@ -63,13 +64,14 @@ const SingleCourse = () => {
       salescontent === '' ||
       linktoyoutube === '' ||
       contentlist === '' ||
-      author === ''
+      author === '' ||
+      accesscode === ''
     ) {
       navigate('/kursy');
     }
-  }, [title, imageurl, numberoflessons, price, pricebeforethirtydays, salescontent, linktoyoutube, contentlist, author, navigate]);
+  }, [title, imageurl, numberoflessons, price, pricebeforethirtydays, salescontent, linktoyoutube, contentlist, author, accesscode, navigate]);
 
-  const handleBuyNow = (id, title, author, price, imageurl) => {
+  const handleBuyNow = (id, title, author, price, imageurl, accesscode) => {
     const isAlreadyInBasket = temporaryBasket.some(item => item.id === id);
   if (isAlreadyInBasket) {
     alert('Ten kurs jest już w koszyku!');
@@ -82,6 +84,7 @@ const SingleCourse = () => {
       author,
       price,
       imageurl,
+      accesscode
     };
 
     const updatedBasket = [...temporaryBasket, helperObject];
@@ -91,7 +94,7 @@ const SingleCourse = () => {
     navigate('/basket')
   };
 
-  const handleAddToBasket = (id, title, author, price, imageurl) => {
+  const handleAddToBasket = (id, title, author, price, imageurl, accesscode) => {
 
     const isAlreadyInBasket = temporaryBasket.some(item => item.id === id);
   if (isAlreadyInBasket) {
@@ -104,6 +107,7 @@ const SingleCourse = () => {
       author,
       price,
       imageurl,
+      accesscode
     };
 
     
@@ -126,10 +130,10 @@ const SingleCourse = () => {
             <h5>
               liczba lekcji: {numberoflessons} autor: {author}
             </h5>
-            <button onClick={() => handleBuyNow(id, title, author, price, imageurl)}>
+            <button onClick={() => handleBuyNow(id, title, author, price, imageurl, accesscode)}>
               Kup teraz {price} zł
             </button>
-            <button onClick={() => handleAddToBasket(id, title, author, price, imageurl)}>Dodaj do koszyka</button>
+            <button onClick={() => handleAddToBasket(id, title, author, price, imageurl, accesscode)}>Dodaj do koszyka</button>
             <h5>Najniższa cena w ostatnich 30 dniach: {pricebeforethirtydays} zł</h5>
           </div>
         </div>
